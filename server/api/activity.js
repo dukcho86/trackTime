@@ -1,8 +1,17 @@
 const router = require('express').Router()
 const {Activity} = require('../db/models')
 
+function isUser(req, res, next) {
+  if (req.user.id === Number(req.params.userId)) {
+    next()
+  } else {
+    const err = new Error('You do not have access to this page')
+    res.status(401).json(err.message)
+  }
+}
+
 // route to serve up all activity
-router.get('/', async (req, res, next) => {
+router.get('/', isUser, async (req, res, next) => {
   try {
     const activity = await Activity.findAll()
     if (activity) {
@@ -16,7 +25,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // route to search by Id
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', isUser, async (req, res, next) => {
   try {
     const activity = await Activity.findByPk(req.params.id)
     if (activity) {
@@ -30,7 +39,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 // route to create new activity
-router.post('/', async (req, res, next) => {
+router.post('/', isUser, async (req, res, next) => {
   try {
     const activity = await Activity.create(req.body)
     if (activity) {
@@ -44,7 +53,7 @@ router.post('/', async (req, res, next) => {
 })
 
 // route to update an existing activity
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', isUser, async (req, res, next) => {
   try {
     const activity = await Activity.findByPk(req.params.id)
     const updatedActivity = await activity.update(req.body)
@@ -59,7 +68,7 @@ router.put('/:id', async (req, res, next) => {
 })
 
 // route to remove activity
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', isUser, async (req, res, next) => {
   try {
     const activity = await Activity.findByPk(req.params.id)
     if (activity) {
