@@ -23,5 +23,8 @@ User.belongsToMany(Category, {through: 'activity'})
 Category.belongsToMany(User, {through: 'activity'})
 
 module.exports = {
-  User
+  User,
+  Category,
+  Activity,
+  Icon
 }
