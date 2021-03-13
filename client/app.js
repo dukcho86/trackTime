@@ -1,13 +1,13 @@
 import React from 'react'
-
-import {ButtonAppBar} from './components'
+import {MenuAppBar, SimpleBottomNavigation} from './components'
 import Routes from './routes'
 
 const App = () => {
   return (
     <div>
-      <ButtonAppBar />
+      <MenuAppBar />
       <Routes />
+      <SimpleBottomNavigation />
     </div>
   )
 }

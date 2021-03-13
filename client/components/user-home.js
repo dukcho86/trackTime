@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import ButtonAppBar from './ButtonAppBar'
+
 /**
  * COMPONENT
  */
@@ -10,7 +10,6 @@ export const UserHome = props => {
 
   return (
     <div>
-      <ButtonAppBar />
       <h3>Welcome, {email}</h3>
     </div>
   )
