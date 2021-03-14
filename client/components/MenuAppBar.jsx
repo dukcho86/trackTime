@@ -4,7 +4,6 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Switch from '@material-ui/core/Switch'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -24,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function MenuAppBar() {
+const MenuAppBar = () => {
   const classes = useStyles()
   const [auth, setAuth] = React.useState(true)
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -97,3 +96,5 @@ export default function MenuAppBar() {
     </div>
   )
 }
+
+export default MenuAppBar

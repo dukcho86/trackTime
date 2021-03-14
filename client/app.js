@@ -7,7 +7,7 @@ const App = () => {
     <div>
       <MenuAppBar />
       <Routes />
-      <SimpleBottomNavigation />
+      {/* <SimpleBottomNavigation /> */}
     </div>
   )
 }
