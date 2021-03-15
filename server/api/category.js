@@ -10,7 +10,6 @@ router.get('/', async (req, res, next) => {
     } else {
       res.status(404).json('No category found in database')
     }
-    res.json(category)
   } catch (err) {
     next(err)
   }
